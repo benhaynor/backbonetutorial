@@ -1,0 +1,41 @@
+{% load formatting %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/static/backbone/libs/jquery-1.9.1.js"></script>
+    <script src="/static/backbone/libs/mustache.js"></script>
+    <script src="/static/backbone/libs/underscore.js"></script>
+    <script src="/static/backbone/libs/backbone.js"></script>
+    <script src="/static/backbone/app/models.js"></script>
+    <script src="/static/backbone/app/views.js"></script>
+    <script src="/static/backbone/app/controllers.js"></script>
+    <script src="/static/backbone/app/init.js"></script>
+    <title>Hello Backbone</title>
+  </head>
+  <body>
+    <h1>Hello Backbone</h1>
+    <form id="meal-ordering">
+      <input type="radio" name="order" value="appetizer">Appetizer<br> 
+      <input type="radio" name="order" value="entree">Entree<br> 
+      <input type="radio" name="order" value="dessert">Dessert<br>
+    </form>
+
+    <form id="create-meal">
+      <input type="text" placeholder="Appetizer" name="appetizer"><br>
+      <input type="text" placeholder="Entree" name="entree"><br>
+      <input type="text" placeholder="Dessert" name="dessert"><br>
+      <button type="button">Create New Meal</button>
+    </form>  
+    <div id="content">
+    </div>
+    <!--Mustache templates -->
+    <div id="mealTemplate" hidden>
+      <h4>Menu</h4>
+      <table>
+        <tr><td>Appetizer:</td><td> {{ "appetizer" | double_stache }}</td></tr>
+        <tr><td>Entree:</td><td> {{"entree" | double_stache}}</td></tr>
+        <tr><td>Dessert:</td><td> {{"dessert" | double_stache}}</td></tr>
+      </table>
+    </div>
+  </body>
+</html>
