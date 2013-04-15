@@ -10,32 +10,61 @@
     <script src="/static/backbone/app/views.js"></script>
     <script src="/static/backbone/app/controllers.js"></script>
     <script src="/static/backbone/app/init.js"></script>
-    <title>Hello Backbone</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>jQuery Mobile boilerplate</title>
+    <link rel="stylesheet" href="/static/backbone/css/jquery.mobile.structure-1.3.0.min.css" />
+    <link rel="stylesheet" href="/static/backbone/css/firsttheme.css">
+    <script src="/static/backbone/libs/jquery.mobile-1.3.0.js"></script>
   </head>
   <body>
-    <h1>Hello Backbone</h1>
-    <form id="meal-ordering">
-      <input type="radio" name="order" value="appetizer">Appetizer<br> 
-      <input type="radio" name="order" value="entree">Entree<br> 
-      <input type="radio" name="order" value="dessert">Dessert<br>
-    </form>
+    <div data-role="page" data-theme="a" id="cookbook">
+      <div data-role="header" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="a.html">Entree</a></li>
+            <li><a href="b.html">Appetizer</a></li>
+            <li><a href="c.html">Dessert</a></li>
+          </ul>
+        </div>
+      </div>
+      <div data-role="content" data-theme="a">
 
-    <form id="create-meal">
-      <input type="text" placeholder="Appetizer" name="appetizer"><br>
-      <input type="text" placeholder="Entree" name="entree"><br>
-      <input type="text" placeholder="Dessert" name="dessert"><br>
-      <button type="button">Create New Meal</button>
-    </form>  
-    <div id="content">
+        <div id="content">
+        </div>
+        <!--Mustache templates -->
+        <div id="mealTemplate" hidden>
+          <h4>Menu</h4>
+          <table>
+            <tr><td>Appetizer:</td><td> {{ "appetizer" | double_stache }}</td></tr>
+            <tr><td>Entree:</td><td> {{"entree" | double_stache}}</td></tr>
+            <tr><td>Dessert:</td><td> {{"dessert" | double_stache}}</td></tr>
+          </table>
+        </div>
+      </div>
+      {% include "footer.html" %} 
     </div>
-    <!--Mustache templates -->
-    <div id="mealTemplate" hidden>
-      <h4>Menu</h4>
-      <table>
-        <tr><td>Appetizer:</td><td> {{ "appetizer" | double_stache }}</td></tr>
-        <tr><td>Entree:</td><td> {{"entree" | double_stache}}</td></tr>
-        <tr><td>Dessert:</td><td> {{"dessert" | double_stache}}</td></tr>
-      </table>
+    <div data-role="page" id="newmeal">
+      <div data-role="content">
+        <form id="create-meal">
+
+          <fieldset data-role="controlgroup">
+            <legend>Dish category:</legend>
+            <input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+            <label for="radio-choice-1">Appetizer</label>
+
+            <input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
+            <label for="radio-choice-2">Entree</label>
+
+            <input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
+            <label for="radio-choice-3">Dessert</label>
+          </fieldset>
+
+          <input type="text" placeholder="name"></input>
+          <button type="button">Add dish</button>
+        </form>         
+      </div>
+      {% include "footer.html" %}
     </div>
   </body>
 </html>
